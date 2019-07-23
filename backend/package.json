@@ -1,0 +1,19 @@
+{
+  "name": "backend-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Katarzyna Dusza",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mocha": "^4.0.1",
+    "mongo-mock": "^2.8.0",
+    "mongodb": "^2.2.33"
+  }
+}

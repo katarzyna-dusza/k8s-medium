@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: ghostwhite;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.section {
+  height: fit-content;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  padding-bottom: 20px;
+  background: white;
+  box-shadow: 0px 0px 27px -10px rgba(0,0,0,0.75);
+}
+
+.section__title {
+  margin: 20px;
+  padding: 15px;
+  text-align: center;
+  color: #010101;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.section__row {
+  margin: 5px 0;
+  display: flex;
+}
+
+.section__row--button {
+  text-align: center;
+  justify-content: flex-end;
+}
+
+.button {
+  width: 100px;
+  margin: 0 20px;
+  padding: 10px 20px;
+  background: lightgrey;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.column-name {
+  width: 20%;
+  padding: 10px 0;
+  background: lightgrey;
+  text-align: center;
+}
+
+.column-name:first-child {
+  margin-left: 10%;
+}
+
+.cell {
+  width: 100%;
+  margin-left: 10%;
+  display: flex;
+  text-align: center;
+}
+
+.cell__value {
+  width: 20%;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+}
+
+.cell__value--remove {
+  cursor: pointer;
+}
+
+.cell__value > a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+label {
+  width: 15%;
+  margin: 10px 10%;
+  display: block;
+}
+
+input {
+  width: 20%;
+}

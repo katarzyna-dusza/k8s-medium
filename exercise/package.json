@@ -1,0 +1,11 @@
+{
+  "name": "backend-app-exercise",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Katarzyna Dusza",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}

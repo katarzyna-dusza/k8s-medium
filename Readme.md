@@ -1,0 +1,199 @@
+# k8s workshop
+
+
+
+## Overview
+
+This repo contains exercises, which together with this blog post, will help you start working with Kubernetes (k8s).
+
+
+
+
+## Prerequisites
+
+- [Docker](<https://docs.docker.com/>)
+- [Minikube](<https://kubernetes.io/docs/tasks/tools/install-minikube/>)
+  - macOs: `brew cask install minikube`
+- [VirtualBox](<https://www.virtualbox.org/>) (for minikube)
+  - macOs: `brew cask install virtualbox`
+
+
+Check the tools:
+
+```bash
+# --- check docker: running containers ---
+docker ps
+
+# output:
+CONTAINER ID	IMAGE	COMMAND		CREATED		STATUS		PORTS		NAMES
+
+# --- check minikube: version & run minikube ---
+minikube -v
+minikube start
+kubectl get all
+
+# output:
+There is a newer version of minikube available (v1.0.0).  Download it here:
+https://github.com/kubernetes/minikube/releases/tag/v1.0.0
+
+To disable this notification, run the following:
+minikube config set WantUpdateNotification false
+😄  minikube v0.35.0 on darwin (amd64)
+🔥  Creating virtualbox VM (CPUs=2, Memory=2048MB, Disk=20000MB) ...
+💿  Downloading Minikube ISO ...
+ 184.42 MB / 184.42 MB [============================================] 100.00% 0s
+📶  "minikube" IP address is 192.168.99.100
+🐳  Configuring Docker as the container runtime ...
+✨  Preparing Kubernetes environment ...
+💾  Downloading kubelet v1.13.4
+💾  Downloading kubeadm v1.13.4
+🚜  Pulling images required by Kubernetes v1.13.4 ...
+🚀  Launching Kubernetes v1.13.4 using kubeadm ...
+⌛  Waiting for pods: apiserver proxy etcd scheduler controller addon-manager dns
+🔑  Configuring cluster permissions ...
+🤔  Verifying component health .....
+💗  kubectl is now configured to use "minikube"
+🏄  Done! Thank you for using minikube!
+
+
+NAME				TYPE		CLUSTER-IP		EXTERNAL-IP		PORT(S)		AGE
+service/kubernetes  ClusterIP	x.x.x.x			<none>			443/TCP		2m
+
+
+```
+
+
+
+## Prepare your environment
+
+To start working with k8s, run these commands:
+
+```bash
+# start minikube
+minikube start
+
+# bind your local docker to the minikube one
+eval $(minikube docker-env)
+
+# enable ingress
+minikube addons enable ingress
+
+# then check
+kc get po -n kube-system
+
+# add this line to your /etc/hosts
+...
+192.168.99.100       backend.domain.com frontend.domain.com
+
+```
+
+
+
+### Deploying database
+
+
+```bash
+kubectl apply -f database/deployment/database-deployment.yaml
+kubectl apply -f database/deployment/service-deployment.yaml
+```
+
+
+
+### Deploying backend
+
+
+```bash
+# build backend docker image
+cd backend
+docker build -t backend:v1 .
+
+# deploy
+kubectl apply -f backend/deployment/backend-deployment.yaml
+kubectl apply -f backend/deployment/backend-service.yaml
+kubectl apply -f backend/deployment/backend-ingress.yaml
+```
+
+
+
+### Deploying frontend
+
+```bash
+# build backend docker image
+cd frontend
+docker build -t frontend:v1 .
+
+# deploy
+kubectl apply -f frontend/deployment/frontend-deployment.yaml
+kubectl apply -f frontend/deployment/frontend-service.yaml
+kubectl apply -f frontend/deployment/frontend-ingress.yaml
+```
+
+This docker images can take some time since `npm install` is running inside. If you want to save your time in the future (you will build the image a couple of times), replace the Dockerfile with the following one:
+
+```dockerfile
+FROM nginx
+
+COPY ./build /etc/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
+WORKDIR /etc/nginx
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+and then run:
+
+```bash
+cd frontend
+
+# install dependencies
+npm install
+
+# build production code
+npm run build
+
+# build backend docker image
+docker build -t frontend:v1 .
+```
+
+
+
+### Health check:
+
+##### Proof (1)
+
+```bash
+# display all resources deployed on k8s
+kubectl get all
+
+# display deployments/pods/services/ingresses deployed on k8s
+kubectl get deployment # or kubectl get deployments or kubectl get deploy
+kubectl get pod # or kubectl get pods or kubectl get po
+kubectl get service # or kubectl get services or kubectl get svc
+kubectl get ingress # or kubectl get ingresses or kubectl get ing
+
+# or 
+kubectl get deploy,po,svc,ing
+```
+
+##### Proof (2)
+
+Go to minikube [dashboard](<http://127.0.0.1:52686/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/#!/overview?namespace=default>) and see your deployments there.
+
+
+##### Proof (3)
+
+Go to **backend.domain.com**. Under the main root (`/`), you should see: _"backend works"_.
+
+##### Proof (4):
+
+Go to **frontend.domain.com** . Now, we should be able to open the frontend app in the browser. 
+
+
+
+### Excercise
+
+It's time for an exercise for you. Inside the **exercise** directory, you will find a small service with Dockerfile. All you need to do is build the image and create yamls to deploy the app on k8s!
+
+Good luck!

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: backend
+  labels:
+    app: backend
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+spec:
+  rules:
+    - host: backend.domain.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: backend
+              servicePort: 4000

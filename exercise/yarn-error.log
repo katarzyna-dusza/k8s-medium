@@ -1,0 +1,42 @@
+Arguments: 
+  /Users/kdusza/.nvm/versions/node/v8.8.0/bin/node /usr/local/Cellar/yarn/1.15.2/libexec/bin/yarn.js
+
+PATH: 
+  /Users/kdusza/.pyenv/shims:/Users/kdusza/.nvm/versions/node/v8.8.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/kdusza/Library/Python/3/
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  8.8.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/kdusza/Projects/Moje/k8s-workshop/exercise/package.json: Unexpected token } in JSON at position 210
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:315:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "backend-app-exercise",
+    "version": "1.0.0",
+    "main": "server.js",
+    "author": "Katarzyna Dusza",
+    "license": "MIT",
+    "dependencies": {
+      "body-parser": "^1.18.2",
+      "express": "^4.16.2",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
