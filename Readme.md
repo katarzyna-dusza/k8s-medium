@@ -89,7 +89,7 @@ kc get po -n kube-system
 
 
 
-### Deploying database
+## Deploying database
 
 
 ```bash
@@ -99,7 +99,7 @@ kubectl apply -f database/deployment/service-deployment.yaml
 
 
 
-### Deploying backend
+## Deploying backend
 
 
 ```bash
@@ -115,7 +115,7 @@ kubectl apply -f backend/deployment/backend-ingress.yaml
 
 
 
-### Deploying frontend
+## Deploying frontend
 
 ```bash
 # build backend docker image
@@ -159,7 +159,7 @@ docker build -t frontend:v1 .
 
 
 
-### Health check:
+## Health check:
 
 ##### Proof (1)
 
@@ -192,7 +192,7 @@ Go to **frontend.domain.com** . Now, we should be able to open the frontend app 
 
 
 
-### Excercise
+## Excercise
 
 It's time for an exercise for you. Inside the **exercise** directory, you will find a small service with Dockerfile. All you need to do is build the image and create yamls to deploy the app on k8s!
 
