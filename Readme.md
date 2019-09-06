@@ -69,21 +69,30 @@ service/kubernetes  ClusterIP	x.x.x.x			<none>			443/TCP		2m
 To start working with k8s, run these commands:
 
 ```bash
-# start minikube
+# Start minikube:
 minikube start
 
-# bind your local docker to the minikube one
+# Use Docker at the command line of your local machine 
+# to communicate with the Docker daemon inside the minikube.
+# This command exports docker env variables and configures your shell. 
+# The docker host url will point to the minikube's one. 
+# From now, everytime when we build a new docker image, 
+# it will be visible inside the minikube.
+# When you create a deployment and provide a docker url to your image,
+# it will take the image previously built by you.
 eval $(minikube docker-env)
 
-# enable ingress
+# Enable the NGINX Ingress controller:
 minikube addons enable ingress
 
-# then check
+# Check if the Ingress controller is there:
 kc get po -n kube-system
 
-# add this line to your /etc/hosts
-...
-192.168.99.100       backend.domain.com frontend.domain.com
+# Add this line to your /etc/hosts:
+# 192.168.99.100 - it's IP of the minikube cluster. 
+# You can simply check it by running: minikube ip
+# (replace your app names with BACKEND_NAME and FRONTEND_NAME)
+192.168.99.100       BACKEND_NAME.domain.com FRONTEND_NAME.domain.com
 
 ```
 
