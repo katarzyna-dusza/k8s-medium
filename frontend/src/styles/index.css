@@ -1,17 +1,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: ghostwhite;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  background: url('/adult-bar-cafe-cinema-375885.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .section {
@@ -20,25 +17,35 @@ code {
   margin-left: 10%;
   margin-bottom: 5%;
   padding-bottom: 20px;
-  background: white;
-  box-shadow: 0px 0px 27px -10px rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 27px -10px rgba(255, 255, 255, 0.75);
 }
 
 .section__title {
   margin: 20px;
   padding: 15px;
   text-align: center;
-  color: #010101;
+  color: brown;
   font-weight: bold;
   font-size: 30px;
 }
 
 .section__row {
-  margin: 5px 0;
+  width: 40%;
+  margin-left: 20%;
+  padding: 5px 0;
   display: flex;
+  color: white;
+}
+
+.section__row--list {
+  width: 100%;
+  display: flex;
+  text-align: center;
 }
 
 .section__row--button {
+  width: 80%;
   text-align: center;
   justify-content: flex-end;
 }
@@ -47,7 +54,7 @@ code {
   width: 100px;
   margin: 0 20px;
   padding: 10px 20px;
-  background: lightgrey;
+  background: brown;
   font-size: 14px;
   cursor: pointer;
 }
@@ -55,7 +62,8 @@ code {
 .column-name {
   width: 20%;
   padding: 10px 0;
-  background: lightgrey;
+  background: brown;
+  color: white;
   text-align: center;
 }
 
@@ -75,6 +83,7 @@ code {
   padding: 10px 0;
   text-align: center;
   border-bottom: 1px solid lightgray;
+  color: white;
 }
 
 .cell__value--remove {
@@ -84,14 +93,20 @@ code {
 .cell__value > a {
   text-decoration: none;
   font-weight: bold;
+  color: brown;
 }
 
 label {
-  width: 15%;
+  width: 50%;
+  text-align: right;
   margin: 10px 10%;
   display: block;
 }
 
 input {
-  width: 20%;
+  width: 50%;
+  background: transparent;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
 }

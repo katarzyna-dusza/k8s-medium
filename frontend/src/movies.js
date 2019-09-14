@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAll, deleteMovie } from "./service";
+import { getAll, deleteMovie, create } from "./service";
 import MovieCreate from "./movie-create";
 
 class Movies extends React.Component {
@@ -27,10 +27,14 @@ class Movies extends React.Component {
     }
   };
 
-  addNewMovie = movie => {
-    this.setState({
-      movies: [...this.state.movies, movie]
-    });
+  addNewMovie = async movie => {
+    const newMovie = await create(movie);
+
+    if (200 === newMovie.status) {
+      this.setState({
+        movies: [...this.state.movies, movie]
+      });
+    }
   };
 
   render() {
@@ -55,7 +59,7 @@ class Movies extends React.Component {
         <MovieCreate addNewMovie={this.addNewMovie} />
         <div className="section">
           <div className="section__title">Movies</div>
-          <div className="section__row">
+          <div className="section__row--list">
             <div className="column-name">Title</div>
             <div className="column-name">Genres</div>
             <div className="column-name">Rate</div>

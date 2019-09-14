@@ -1,5 +1,4 @@
 import React from "react";
-import { create, update } from "./service";
 
 class MovieCreate extends React.Component {
   state = {
@@ -17,7 +16,7 @@ class MovieCreate extends React.Component {
     });
   };
 
-  handleSubmit = async event => {
+  handleSubmit = () => {
     const movie = {
       title: this.state.title,
       genres: this.state.genres,
@@ -26,17 +25,13 @@ class MovieCreate extends React.Component {
       runtime: this.state.runtime
     };
 
-    const newMovie = await create(movie);
-
-    if (200 === newMovie.status) {
-      this.props.addNewMovie(newMovie.data.result.data);
-    }
+    this.props.addNewMovie(movie);
   };
 
   render() {
     return (
       <div className="section">
-        <div className="section__title">New movie</div>
+        <div className="section__title">Add movie</div>
         <div className="section__row">
           <label>Title:</label>
           <input
