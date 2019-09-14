@@ -89,10 +89,10 @@ minikube addons enable ingress
 kc get po -n kube-system
 
 # Add this line to your /etc/hosts:
-# 192.168.99.100 - it's IP of the minikube cluster. 
+# 192.168.99.XXX - it's IP of the minikube cluster. 
 # You can simply check it by running: minikube ip
 # (replace your app names with BACKEND_NAME and FRONTEND_NAME)
-192.168.99.100       backend.domain.com frontend.domain.com
+192.168.99.XXX       backend.domain.com frontend.domain.com
 
 ```
 
