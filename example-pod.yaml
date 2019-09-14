@@ -2,15 +2,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    test: readiness
-  name: readiness
+    app: example 
+  name: nginx
 spec:
   containers:
-  - name: liveness
+  - name: nginx
     image: nginx
     ports:
     - containerPort: 8080
-    readinessProbe:
-      httpGet:
-        path: /healthz
-        port: 8080
