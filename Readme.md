@@ -1,4 +1,4 @@
-# k8s workshop
+# Kubernetes in a nutshell - tutorial for beginners
 
 
 
