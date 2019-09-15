@@ -86,7 +86,7 @@ eval $(minikube docker-env)
 minikube addons enable ingress
 
 # Check if the Ingress controller is there:
-kc get po -n kube-system
+kubectl get po -n kube-system
 
 # Add this line to your /etc/hosts:
 # 192.168.99.XXX - it's IP of the minikube cluster. 
