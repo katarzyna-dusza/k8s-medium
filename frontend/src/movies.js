@@ -41,7 +41,7 @@ class Movies extends React.Component {
   };
 
   render() {
-    const displayMovies = this.state.movies.map((m, i) => { console.log(m); return (
+    const displayMovies = this.state.movies.map((m, i) => (
       <div key={i} className="cell">
         <div className="cell__value">{m.title ? m.title : '-'}</div>
         <div className="cell__value">{m.genres ? m.genres : '-'}</div>
@@ -53,7 +53,7 @@ class Movies extends React.Component {
           delete
         </div>
       </div>
-    )});
+    ));
 
     return (
       <div>
