@@ -114,13 +114,12 @@ kubectl apply -f database/deployment/service-deployment.yaml
 
 ```bash
 # build backend docker image
-cd backend
-docker build -t backend:v1 .
+docker build -t backend:v1 ./backend
 
 # deploy
-kubectl apply -f backend/deployment/backend-deployment.yaml
-kubectl apply -f backend/deployment/backend-service.yaml
-kubectl apply -f backend/deployment/backend-ingress.yaml
+kubectl apply -f ./backend/deployment/backend-deployment.yaml
+kubectl apply -f ./backend/deployment/backend-service.yaml
+kubectl apply -f ./backend/deployment/backend-ingress.yaml
 ```
 
 
@@ -129,13 +128,12 @@ kubectl apply -f backend/deployment/backend-ingress.yaml
 
 ```bash
 # build backend docker image
-cd frontend
-docker build -t frontend:v1 .
+docker build -t frontend:v1 ./frontend
 
 # deploy
-kubectl apply -f frontend/deployment/frontend-deployment.yaml
-kubectl apply -f frontend/deployment/frontend-service.yaml
-kubectl apply -f frontend/deployment/frontend-ingress.yaml
+kubectl apply -f ./frontend/deployment/frontend-deployment.yaml
+kubectl apply -f ./frontend/deployment/frontend-service.yaml
+kubectl apply -f ./frontend/deployment/frontend-ingress.yaml
 ```
 
 This docker images can take some time since `npm install` is running inside. If you want to save your time in the future (you will build the image a couple of times), replace the Dockerfile with the following one:
@@ -166,8 +164,6 @@ npm run build
 # build backend docker image
 docker build -t frontend:v1 .
 ```
-
-
 
 ## Health check:
 
@@ -207,3 +203,38 @@ Go to **frontend.domain.com** . Now, we should be able to open the frontend app 
 It's time for an exercise for you. Inside the **exercise** directory, you will find a small service with Dockerfile. All you need to do is build the image and create yamls to deploy the app on k8s!
 
 Good luck!
+
+
+## Play with MongoDB
+
+```bash
+# list all pods
+kubectl get po
+
+# enter the container 
+kubectl exec -it pod-name bash
+
+#--------- inside mongo container
+
+# run mongo shell
+mongo
+
+# list all databases
+show dbs
+
+# select movies-db database
+use movies-db
+
+# add new movie to the collection
+db.movies.insert({ title: 'title', genres: 'genres', cast: 'cast', rate: 8, runtime: 120 })
+
+# list all movies
+db.movies.find().pretty()
+
+```
+
+> You can do the same to list your logs inside backend/frontend app, for example:
+>
+> All you need to do is to run the same command:
+>
+> `kubectl exec -it pod-name bash`
