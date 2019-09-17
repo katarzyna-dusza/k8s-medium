@@ -47,9 +47,9 @@ MongoClient.connect(MONGO_CONNECTION, function (err, db) {
             rate: req.body.rate,
             runtime: req.body.runtime
         };
-
+         
         model.Movies(db).add(data)
-            .then(result => res.send(result))
+            .then(result => res.send(result.insertedId))
             .catch(err => console.log(err));
     });
 

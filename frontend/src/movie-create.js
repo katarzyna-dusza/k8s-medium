@@ -30,7 +30,7 @@ class MovieCreate extends React.Component {
 
   render() {
     return (
-      <div className="section">
+      <div>
         <div className="section__title">Add movie</div>
         <div className="section__row">
           <label>Title:</label>
