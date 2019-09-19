@@ -232,9 +232,3 @@ db.movies.insert({ title: 'title', genres: 'genres', cast: 'cast', rate: 8, runt
 db.movies.find().pretty()
 
 ```
-
-> You can do the same to list your logs inside backend/frontend app, for example:
->
-> All you need to do is to run the same command:
->
-> `kubectl exec -it pod-name bash`
