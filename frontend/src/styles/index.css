@@ -46,6 +46,8 @@ body {
   width: 100%;
   text-align: center;
   justify-content: flex-end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20px;
 }
 
 .button {
