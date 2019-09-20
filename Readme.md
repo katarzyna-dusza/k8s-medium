@@ -4,9 +4,8 @@
 
 ## Overview
 
-This repo contains exercises, which together with this blog post, will help you start working with Kubernetes (k8s).
-In case of any issues, see the [Kubernetes troubleshooting](https://medium.com/@katarzyna.jolanta.dusza/kubernetes-troubleshooting-42ac0754422d) article.
-
+This repo contains exercises, which together with [this](https://medium.com/@katarzyna.jolanta.dusza/kubernetes-in-a-nutshell-tutorial-for-beginners-caa442dfd6c0?source=friends_link&sk=88d18b5a732b355271f19bab020bc83d) blog post, will help you start working with Kubernetes (k8s).
+You can look at my [Kubernetes troubleshooting](https://medium.com/@katarzyna.jolanta.dusza/kubernetes-troubleshooting-42ac0754422d) guide, which covers the most common beginner questions and mistakes.
 
 
 
