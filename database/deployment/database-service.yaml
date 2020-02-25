@@ -12,5 +12,3 @@ spec:
       protocol: TCP
   selector:
     app: mongo
-  externalIPs:
-    - 80.11.12.10
