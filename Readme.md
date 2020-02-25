@@ -103,7 +103,7 @@ kubectl get po -n kube-system
 
 ```bash
 kubectl apply -f database/deployment/database-deployment.yaml
-kubectl apply -f database/deployment/service-deployment.yaml
+kubectl apply -f database/deployment/database-service.yaml
 ```
 
 
