@@ -11,7 +11,7 @@
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "cors": "^2.8.4",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "mocha": "^4.0.1",
     "mongo-mock": "^2.8.0",
     "mongodb": "^2.2.33"
